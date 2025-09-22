@@ -3,6 +3,7 @@ package org.example
 import org.example.dresseur.Entraineur
 import org.example.monde.Zone
 import org.example.monstres.EspeceMonstre
+import org.example.monstres.IndividuMonstre
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -25,6 +26,15 @@ fun main() {
 
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
+
+    val monstre1 = IndividuMonstre(1, "springleaf", monstre1, null,1500.0)
+    val monstre2 = IndividuMonstre(2, "flamkip", monstre2, null,1500.0)
+    val monstre3 = IndividuMonstre(3, "aquamy", monstre3, null,1500.0)
+
+    //monstre1.attaquer(cible = monstre2)
+    //monstre1.renommer()
+    //println(monstre1.nom)
+    monstre1.afficheDetail()
 }
 
 /**
