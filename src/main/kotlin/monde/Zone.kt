@@ -1,6 +1,10 @@
 package org.example.monde
 
+import org.example.jeu.CombatMonstre
+import org.example.joueur
 import org.example.monstres.EspeceMonstre
+import org.example.monstres.IndividuMonstre
+import kotlin.random.Random
 
 /**
  * Représente une zone dans un environnement de jeu.
@@ -22,4 +26,23 @@ class Zone (
     var zonePrecedente: Zone? = null,
     //TODO genereMonstre()
     //TODO rencontreMonstre()
-)
+){
+    fun genereMonstre(): IndividuMonstre {
+        val especeMonstreAlea = especesMonstres.random()
+        expZone += if (Random.nextBoolean()) 20 else -20
+        var monstreAlea = IndividuMonstre(4000,"SauvageTest",especeMonstreAlea,null,expZone.toDouble())
+        return monstreAlea
+    }
+
+    fun rencontreMonstre(){
+        val monstreSauvage = genereMonstre()
+        var premierPokemon: IndividuMonstre? = null
+        joueur.equipeMonstre.forEach(){monstre ->
+            if(monstre.pv>0){
+                premierPokemon = monstre
+            }
+        }
+        val combat = CombatMonstre(premierPokemon!!, monstreSauvage)
+        combat.lancerCombat()
+    }
+}

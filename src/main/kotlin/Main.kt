@@ -1,6 +1,7 @@
 package org.example
 
 import org.example.dresseur.Entraineur
+import org.example.item.MonsterKube
 import org.example.monde.Zone
 import org.example.monstres.EspeceMonstre
 import org.example.monstres.IndividuMonstre
@@ -34,7 +35,13 @@ fun main() {
     //monstre1.attaquer(cible = monstre2)
     //monstre1.renommer()
     //println(monstre1.nom)
-    monstre1.afficheDetail()
+    //monstre1.afficheDetail()
+    //val badgeRoche = Badge(1,"Badge Roche","Badge gagné lorque le joueur atteint l'arène de pierre.",)
+
+    val MonsterKube = MonsterKube(1, "MonsterKube", "Outil servant à capturer un monstre", 5.0)
+
+    joueur.equipeMonstre.add(monstre1)
+    //route1.rencontreMonstre()
 }
 
 /**

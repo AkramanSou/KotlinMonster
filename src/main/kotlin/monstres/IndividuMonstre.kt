@@ -164,7 +164,15 @@ class IndividuMonstre (
         }
     }
 
+    /**
+     * Affiche les informations principales du monstre :
+     * espèce, nom, PV, attaque et défense.
+     */
     fun afficheDetail(){
         println(espece.afficheArt())
+        println("nom du monstre : $nom")
+        println("point de vie : $pv")
+        println("attaque : $attaque")
+        println("defense : $defense")
     }
 }
