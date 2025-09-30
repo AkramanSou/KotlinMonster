@@ -93,13 +93,16 @@ class CombatMonstre (
         if(gameOver() == true){
             return false
         }
-        println("Menu d'action (1, 2 ,3)")
+        println("Menu d'action (1 - > Attaquer le monstre , 2 -> Utiliser un objet , 3 -> Changer de monstre)")
         var choixAction = readln().toInt()
         if(choixAction == 1){
             monstreJoueur.attaquer(monstreSauvage)
             return true
         } else if(choixAction == 2){
-            println(joueur.sacAItems)
+            println("Sac :")
+            for (i in joueur.sacAItems.indices) {
+                println("$i : ${joueur.sacAItems[i].nom}")
+            }
             var indexChoix: Int = readln().toInt()
             var objetChoisi = joueur.sacAItems[indexChoix]
             if(objetChoisi is Utilisable){
@@ -111,7 +114,10 @@ class CombatMonstre (
                 println("Objet non utilisable")
             }
         } else if(choixAction == 3){
-            println(joueur.equipeMonstre)
+            println("Équipe :")
+            for (i in joueur.equipeMonstre.indices) {
+                println("$i : ${joueur.equipeMonstre[i].nom}")
+            }
             var indexChoix = readln().toInt()
             var choixMonstre = joueur.equipeMonstre[indexChoix]
             if(choixMonstre.pv <= 0){

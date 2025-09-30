@@ -2,6 +2,7 @@ package org.example
 
 import org.example.dresseur.Entraineur
 import org.example.item.MonsterKube
+import org.example.jeu.Partie
 import org.example.monde.Zone
 import org.example.monstres.EspeceMonstre
 import org.example.monstres.IndividuMonstre
@@ -23,14 +24,23 @@ val route1 = Zone(1, "Forêt Lumineuse", 50, mutableListOf(monstre1, monstre5))
 val route2 = Zone(2, "Montagnes Rocheuses", 70, mutableListOf(monstre6, monstre4))
 val route3 = Zone(3, "Marais Brumeux", 65, mutableListOf(monstre3, monstre2))
 
+var kube1 = MonsterKube(1,"Kube","Un petit kube pour capturer un monstre",50.0)
+
 fun main() {
 
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
+    route2.zoneSuivante = route3
+    route3.zonePrecedente = route2
+    joueur.sacAItems.add(kube1)
 
-    val monstre1 = IndividuMonstre(1, "springleaf", monstre1, null,1500.0)
-    val monstre2 = IndividuMonstre(2, "flamkip", monstre2, null,1500.0)
-    val monstre3 = IndividuMonstre(3, "aquamy", monstre3, null,1500.0)
+    val partie = nouvellePartie()
+    partie.choixStarter()
+    partie.jouer()
+
+    //val monstre1 = IndividuMonstre(1, "springleaf", monstre1, null,1500.0)
+    //val monstre2 = IndividuMonstre(2, "flamkip", monstre2, null,1500.0)
+    // monstre3 = IndividuMonstre(3, "aquamy", monstre3, null,1500.0)
 
     //monstre1.attaquer(cible = monstre2)
     //monstre1.renommer()
@@ -40,8 +50,17 @@ fun main() {
 
     val MonsterKube = MonsterKube(1, "MonsterKube", "Outil servant à capturer un monstre", 5.0)
 
-    joueur.equipeMonstre.add(monstre1)
     //route1.rencontreMonstre()
+}
+
+val MonsterKube = MonsterKube(1, "MonsterKube", "Outil servant à capturer un monstre", 5.0)
+
+fun nouvellePartie(): Partie {
+    println("Bienvenue dans le monde magique des Pokémon! Mon nom est Chen! Les gens souvent m'appellent le Prof Pokémon! Ce monde est peuplé de créatures du nom de Pokémon!")
+    println("Rentrez votre nom : ")
+    val nomJoueur = readln()
+    val PartieJoueur = Partie(1,joueur,route1)
+    return PartieJoueur
 }
 
 /**
